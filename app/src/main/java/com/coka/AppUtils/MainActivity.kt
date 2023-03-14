@@ -3,17 +3,25 @@ package com.coka.AppUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.coka.base_mvp.base.BaseActivity
 import com.coka.progressdialog.ProgressDialogHolder
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity() {
+    override fun initView() {
         val tvShowDialog = findViewById<TextView>(R.id.tvShowDialog)
-
         tvShowDialog.setOnClickListener{
             ProgressDialogHolder.getInstance(this).showDialog("")
         }
+    }
+
+    override fun initData() {
+       //cal api
+    }
+
+    override fun getLayoutId(): Int =R.layout.activity_main
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
     }
 }
