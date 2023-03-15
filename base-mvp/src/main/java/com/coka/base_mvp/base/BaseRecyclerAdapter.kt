@@ -110,6 +110,7 @@ abstract class BaseRecyclerAdapter<T>(context: Context?) : Adapter<RecyclerView.
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun clear() {
         mItems.clear()
         notifyDataSetChanged()
