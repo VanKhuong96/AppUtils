@@ -1,6 +1,6 @@
 package com.coka.base_mvp.base
 
-interface BaseView {
+interface BaseViewMVP {
     fun showLoading()
 
     fun hideLoading()

@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -40,5 +41,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     //find by id
     implementation 'com.jakewharton:butterknife:10.2.3'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
+    kapt 'com.jakewharton:butterknife-compiler:10.2.3'
+}
+kapt {
+    generateStubs = true
 }

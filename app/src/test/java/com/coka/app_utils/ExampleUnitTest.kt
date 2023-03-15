@@ -1,4 +1,4 @@
-package com.coka.AppUtils
+package com.coka.app_utils
 
 import org.junit.Test
 
