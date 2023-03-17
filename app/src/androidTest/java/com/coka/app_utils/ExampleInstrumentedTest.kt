@@ -1,4 +1,4 @@
-package com.coka.AppUtils
+package com.coka.app_utils
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

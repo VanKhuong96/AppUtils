@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "AppUtils"
 include ':app'
 include ':ProgressDialog'
+include ':base-mvp'
