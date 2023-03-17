@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import butterknife.ButterKnife
 import butterknife.Unbinder
 
-abstract class BaseFragmentMVP : Fragment() {
+abstract class BaseFragmentMVP : Fragment(),BaseViewMVP {
      var mRootView: View? = null
      var mInflater: LayoutInflater? = null
      var mContext: Context? = null

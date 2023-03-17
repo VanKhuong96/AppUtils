@@ -47,6 +47,8 @@ dependencies {
     //find by id
     implementation 'com.jakewharton:butterknife:10.2.3'
     kapt 'com.jakewharton:butterknife-compiler:10.2.3'
+    //gson
+    implementation "com.google.code.gson:gson:$gsonVersion"
 }
 kapt {
     generateStubs = true

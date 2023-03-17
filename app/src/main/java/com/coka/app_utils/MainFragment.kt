@@ -7,24 +7,22 @@ import butterknife.BindView
 import com.coka.AppUtils.R
 import com.coka.base_mvp.base.BaseFragmentMVP
 import com.coka.base_mvp.base.BaseRecyclerAdapter.OnItemClickListener
+import com.coka.progressdialog.ProgressDialogHolder
 
-class MainFragment:BaseFragmentMVP() {
+class MainFragment:BaseFragmentMVP(),IMainContract.View {
     fun newInstance(): MainFragment {
         return MainFragment()
     }
 
     override fun getLayoutId(): Int = R.layout.main_fragment
 
-
+    private lateinit var testMAdapter:TestMAdapter
     @BindView(R.id.recyclerView)
     lateinit var recyclerView: RecyclerView
     override fun initView() {
-        var testMAdapter=TestMAdapter(requireContext())
+        testMAdapter=TestMAdapter(requireContext())
         recyclerView.layoutManager=LinearLayoutManager(requireContext())
         recyclerView.adapter=testMAdapter
-        for (i in 1..20) {
-            testMAdapter.addItem("Item " + i)
-        }
         testMAdapter.setOnItemClickListener(object : OnItemClickListener {
             override fun onItemClick(position: Int, itemId: Long) {
                 Log.e("khuongnv","position:"+position)
@@ -34,9 +32,38 @@ class MainFragment:BaseFragmentMVP() {
         })
 
     }
-
+    private lateinit var  presenter:MainPresenter
     override fun initData() {
+        presenter= MainPresenter(this,requireContext())
+        presenter.checkToken()
+        presenter.getApi()
+    }
 
+    override fun showLoading() {
+        ProgressDialogHolder.getInstance(requireActivity()).showDialog("")
+    }
 
+    override fun hideLoading() {
+        ProgressDialogHolder.getInstance(requireActivity()).dismissDialog()
+    }
+
+    override fun showRetry() {
+    }
+
+    override fun hideRetry() {
+    }
+
+    override fun showNetWorkError() {
+    }
+
+    override fun showErrorServer() {
+    }
+
+    override fun showErrorServer(message: String?) {
+    }
+
+    override fun bindGetApi(list: List<String>) {
+        Log.e("khuongnv","bindGetData:"+list.size)
+        testMAdapter.addAll(list)
     }
 }

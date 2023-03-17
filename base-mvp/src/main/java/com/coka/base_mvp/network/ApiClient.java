@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     private static Retrofit retrofit = null;
-    private static String baseURL = "";
+    private static String baseURL = "https://api001-test.godai.net/";
 
     public static class AuthenticationInterceptor implements Interceptor {
         private final String mToken;
@@ -35,12 +35,13 @@ public class ApiClient {
         public Response intercept(Chain chain) throws IOException {
             Request original = chain.request();
             Request.Builder builder = original.newBuilder()
-                    .header("Token", mToken);
+                    .header("Content-Type","application/json; charset=UTF-8")
+                    .header("Authorization", mToken);
             Request request = builder.build();
             return chain.proceed(request);
         }
     }
-    public static Retrofit getClient(String token, String url) {
+    public static Retrofit getClient(String token) {
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss")
@@ -61,7 +62,7 @@ public class ApiClient {
             okHttpClient.addInterceptor(authenticationInterceptor);
         }
         retrofit = new Retrofit.Builder()
-                .baseUrl(url)
+                .baseUrl(baseURL)
                 .client(okHttpClient.build())
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .addCallAdapterFactory(new ErrorHandlingAdapter.ErrorHandlingCallAdapterFactory())
