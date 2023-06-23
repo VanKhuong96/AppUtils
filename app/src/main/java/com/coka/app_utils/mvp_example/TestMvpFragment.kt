@@ -1,4 +1,4 @@
-package com.coka.app_utils
+package com.coka.app_utils.mvp_example
 
 import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -9,18 +9,18 @@ import com.coka.base_mvp.base.BaseFragmentMVP
 import com.coka.base_mvp.base.BaseRecyclerAdapter.OnItemClickListener
 import com.coka.progressdialog.ProgressDialogHolder
 
-class MainFragment:BaseFragmentMVP(),IMainContract.View {
-    fun newInstance(): MainFragment {
-        return MainFragment()
+class TestMvpFragment:BaseFragmentMVP(), ITestMvpContract.View {
+    fun newInstance(): TestMvpFragment {
+        return TestMvpFragment()
     }
 
-    override fun getLayoutId(): Int = R.layout.main_fragment
+    override fun getLayoutId(): Int = R.layout.test_mvp_fragment
 
-    private lateinit var testMAdapter:TestMAdapter
+    private lateinit var testMAdapter: TestMAdapter
     @BindView(R.id.recyclerView)
     lateinit var recyclerView: RecyclerView
     override fun initView() {
-        testMAdapter=TestMAdapter(requireContext())
+        testMAdapter= TestMAdapter(requireContext())
         recyclerView.layoutManager=LinearLayoutManager(requireContext())
         recyclerView.adapter=testMAdapter
         testMAdapter.setOnItemClickListener(object : OnItemClickListener {
@@ -32,9 +32,9 @@ class MainFragment:BaseFragmentMVP(),IMainContract.View {
         })
 
     }
-    private lateinit var  presenter:MainPresenter
+    private lateinit var  presenter: TestPresenter
     override fun initData() {
-        presenter= MainPresenter(this,requireContext())
+        presenter= TestPresenter(this,requireContext())
         presenter.checkToken()
         presenter.getApi()
     }
