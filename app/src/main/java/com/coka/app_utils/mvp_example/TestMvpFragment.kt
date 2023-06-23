@@ -32,9 +32,9 @@ class TestMvpFragment:BaseFragmentMVP(), ITestMvpContract.View {
         })
 
     }
-    private lateinit var  presenter: MainPresenter
+    private lateinit var  presenter: TestPresenter
     override fun initData() {
-        presenter= MainPresenter(this,requireContext())
+        presenter= TestPresenter(this,requireContext())
         presenter.checkToken()
         presenter.getApi()
     }

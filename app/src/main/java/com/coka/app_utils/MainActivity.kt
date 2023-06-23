@@ -1,7 +1,8 @@
-package com.coka.app_utils.mvp_example
+package com.coka.app_utils
 
 import android.os.Bundle
 import com.coka.AppUtils.R
+import com.coka.app_utils.mvp_example.TestMvpFragment
 import com.coka.app_utils.utils.SharePreferenceUtils
 import com.coka.base_mvp.base.BaseActivityMVP
 
