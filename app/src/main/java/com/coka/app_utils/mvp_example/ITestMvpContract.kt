@@ -1,8 +1,8 @@
-package com.coka.app_utils
+package com.coka.app_utils.mvp_example
 
 import com.coka.base_mvp.base.BaseViewMVP
 
-interface IMainContract {
+interface ITestMvpContract {
     interface Presenter{
         fun getApi()
     }

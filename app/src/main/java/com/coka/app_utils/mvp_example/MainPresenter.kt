@@ -1,10 +1,11 @@
-package com.coka.app_utils
+package com.coka.app_utils.mvp_example
 
 import android.content.Context
 import android.util.Log
 import com.coka.base_mvp.base.BasePresenter
 
-class MainPresenter(private val view:IMainContract.View,var context: Context):IMainContract.Presenter,BasePresenter(context,"") {
+class MainPresenter(private val view: ITestMvpContract.View, var context: Context):
+    ITestMvpContract.Presenter,BasePresenter(context,"") {
     private val mutableList : MutableList<String> = ArrayList()
     override fun getApi() {
         Log.e("khuongnv","run getData")
